@@ -64,10 +64,14 @@ shinyServer(function(input, output) {
         y.fit.points <- fit.coefs[1] + fit.coefs[2] * x.fit.points + fit.coefs[3] * (x.fit.points ^ 2)
         
         with(filteredDiamonds, {
-            plot(x = carat, y = price, col = "blue", 
+            plot(x = carat, y = price, type = "n", 
                  xlab = "Weight, carats", ylab = "Price, USD",
                  main = "Price of diamonds depending on their weight"
             )
+
+            grid()
+            
+            points(x = carat, y = price, col = "blue")
             
             lines(x = x.fit.points, y = y.fit.points, col = "red", lty = 1, lwd = 3)
             

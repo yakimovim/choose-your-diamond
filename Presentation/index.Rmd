@@ -1,6 +1,6 @@
 ---
-title       : Presentation
-subtitle    : 
+title       : Do you want a diamond?
+subtitle    : How to choose your diamond
 author      : Ivan Iakimov
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -11,16 +11,56 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## Diamonds color
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+There are some things you should consider if you want to choose a diamond. One of them is color. Internationally recognized laboratories (GIA & IGI for example) use a grading scale for diamonds in the normal color range. The scale ranges from D which is totally colorless to Z which is a pale yellow or brown color. Brown diamonds darker than K color are usually described using their letter grade, and a descriptive phrase, for example M Faint Brown. Diamonds with more depth of color than Z color fall into the fancy color diamond range.
 
---- .class #id 
+You can read more about it [here](https://en.wikipedia.org/wiki/Diamond_color).
 
-## Slide 2
+The best diamonds have color between D and J.
 
+---
 
+## Diamonds cut
 
+A diamond cut is a style or design guide used when shaping a diamond for polishing such as the brilliant cut. Cut does not refer to shape (pear, oval), but the symmetry, proportioning and polish of a diamond. The cut of a diamond greatly affects a diamond's brilliance; this means if it is cut poorly, it will be less luminous.
 
+You can read more about it [here](https://en.wikipedia.org/wiki/Diamond_cut).
+
+---
+
+## Diamonds clarity
+
+Diamond clarity is the quality of diamonds that relates to the existence and visual appearance of internal characteristics of a diamond called inclusions, and surface defects, called blemishes. Clarity is one of the four Cs of diamond grading, the others being carat, color, and cut.
+
+You can read more about it [here](https://en.wikipedia.org/wiki/Diamond_clarity).
+
+<div style='text-align: center;'>
+<img height='300' src='https://yourdiamondteacher.com/wp-content/uploads/2015/03/Diamond-grades-clarity-chart-real-life-examples.png' />
+</div>
+
+---
+
+## Choose your diamond!
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+numberOfDiamonds <- nrow(diamonds)
+```
+
+To provide you with the best choice of diamond we use a dataset of `r numberOfDiamonds` diamonds.
+
+```{r echo=FALSE, fig.align='center', fig.height=4}
+with(diamonds, {
+    plot(x = carat, y = price, type = "n", 
+         xlab = "Weight, carats", ylab = "Price, USD",
+         main = "Price of diamonds depending on their weight")
+    grid()
+    points(x = carat, y = price, col = "blue")
+})
+
+```
+
+You should only choose desired cut, color, clarity and weight of a diamond, and we'll give you an approximate price you can focus on. Our program uses modern prediction techniques to provide you with the best estimation of the price.
+
+### Try it [here](https://iakimov.shinyapps.io/ChooseYourDiamond/).
